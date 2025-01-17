@@ -1,0 +1,770 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    cursor: none; /* Hide default cursor */
+}
+
+body {
+    position: relative;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(bcakground\ iamge\ for\ website\ 2.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    z-index: -1;
+}
+
+/* Custom cursor */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.2s ease;
+}
+
+.cursor-dot {
+    width: 4px;
+    height: 4px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Navbar */
+.navbar-container {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+}
+
+.navbar-container .container {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-container header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-toggler {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.nav-link {
+    color: black !important;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 8px 15px;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-link:hover {
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-collapse .ms-auto {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        padding: 1rem;
+    }
+
+    .navbar-collapse .ms-auto {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .nav {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .auth-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .auth-buttons .btn {
+        width: 200px;
+        margin: 5px 0;
+    }
+}
+
+/* Auth buttons styling */
+.auth-buttons .btn {
+    padding: 10px 25px;
+    margin: 0 5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #001F54, #0066CC);
+    color: white;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 31, 84, 0.2);
+}
+
+.auth-buttons .btn:hover {
+    background: linear-gradient(45deg, #0066CC, #001F54);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 31, 84, 0.3);
+}
+
+.auth-buttons .btn:first-child {
+    background: linear-gradient(135deg, #6AB7FF 0%, #4A90E2 100%);
+    border: none;
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+}
+
+.auth-buttons .btn:last-child {
+    background: #4A90E2;
+    border: 2px solid #4A90E2;
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.auth-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.auth-buttons .btn:first-child:hover {
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+}
+
+.auth-buttons .btn:last-child:hover {
+    background: #357ABD;
+    border-color: #357ABD;
+}
+
+/* Text styling with better visibility */
+.display-4 {
+    color: #001F54;
+    font-size: 50px;
+    font-weight: 800;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.display-4 .main-text {
+    display: block;
+    background: linear-gradient(45deg, #FFFFFF, #FFD700, #FFFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradient 3s linear infinite;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.display-4 .sub-text {
+    display: block;
+    font-size: 0.4em;
+    font-weight: 400;
+    color: #FFFFFF;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    animation: fadeInUp 1s ease-out;
+    -webkit-text-fill-color: #FFFFFF;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lead {
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    position: relative;
+    padding: 25px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin-top: 20px;
+    border-left: 4px solid #FFD700;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+p {
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.maincontainer {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 200px);
+    padding-bottom: 100px; /* Add space for footer */
+}
+
+.maincontainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.footer {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.footer .text-muted {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.footer a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.footer a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    transition: width 0.3s ease;
+}
+
+.footer a:hover::after {
+    width: 100%;
+}
+
+#adminDashboardLinkContainer {
+    position: relative;
+    padding: 5px 0;
+}
+
+#adminDashboardLink {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+#adminDashboardLink:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.row.align-items-center {
+    margin: 0;
+    height: 100%;
+}
+
+.shadow-lg.rounded {
+    position: relative;
+    max-height: calc(70vh - 100px); /* Reduce height to account for footer */
+    overflow: hidden;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px; /* Add some bottom margin */
+}
+
+.shadow-lg.rounded:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.shadow-lg.rounded::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 200%;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
+.img-fluid {
+    max-height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 0.5s ease;
+}
+
+.shadow-lg.rounded:hover .img-fluid {
+    transform: scale(1.1);
+}
+
+/* Button styling */
+.btn-primary {
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #357abd 0%, #4a90e2 100%);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.btn-primary:hover::before {
+    opacity: 1;
+}
+
+.btn-outline-secondary {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .display-4 {
+        font-size: 3.2rem;
+    }
+    
+    .lead {
+        font-size: 1.2rem;
+    }
+    
+    .shadow-lg.rounded {
+        max-height: 60vh;
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem;
+        display: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar-collapse.show {
+        display: block;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav-link {
+        padding: 0.8rem 1rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .auth-buttons {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .auth-buttons .btn {
+        width: 200px;
+        margin: 5px 0;
+    }
+
+    .logo {
+        height: 100px !important;
+        width: auto !important;
+    }
+
+    .display-4 {
+        font-size: 2.8rem;
+        text-align: center;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .maincontainer {
+        padding-top: 80px;
+        padding-bottom: 120px;
+    }
+    
+    .navbar-container {
+        padding: 5px 0;
+    }
+    
+    .auth-buttons {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .auth-buttons .btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        height: 80px !important;
+    }
+
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+
+    .shadow-lg.rounded img {
+        max-width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .display-4 {
+        font-size: 2.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+        margin: 15px 0;
+        background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .shadow-lg.rounded {
+        max-height: 50vh;
+        margin: 20px 0;
+    }
+    
+    .navbar-container {
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .nav-link {
+        padding: 10px;
+        text-align: center;
+        font-size: 1rem;
+    }
+    
+    .auth-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .auth-buttons .btn {
+        width: 200px;
+        margin: 5px 0;
+    }
+    
+    .footer {
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+
+    .shadow-lg.rounded {
+        max-height: 40vh;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+    }
+
+    .footer {
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Fix for very small devices */
+@media (max-width: 320px) {
+    .display-4 {
+        font-size: 1.8rem;
+    }
+    
+    .lead {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+    
+    .auth-buttons .btn {
+        width: 180px;
+        font-size: 0.85rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+}
+
+/* Fix for landscape mode on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .maincontainer {
+        padding-top: 60px;
+        padding-bottom: 80px;
+    }
+    
+    .shadow-lg.rounded {
+        max-height: 200px;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .lead {
+        font-size: 0.95rem;
+        margin: 10px ,0;
+    }
+}
+
+#userSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#userSection.d-none {
+    display: none !important;
+}
+
+.welcome-text {
+    color: #000;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+    #userSection {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    #userSection .btn {
+        width: 200px;
+    }
+}
