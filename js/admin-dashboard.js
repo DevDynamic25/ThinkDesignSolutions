@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5004/api';
+const API_URL = 'https://backend-eyb1.onrender.com/api';
 
 // Load dashboard data
 async function loadDashboardData() {
